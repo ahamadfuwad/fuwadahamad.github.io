@@ -157,7 +157,6 @@
 </head>
 <body>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <div class="lightbox-close">×</div>
   <img id="lightbox-img" src="" alt="" />
@@ -178,7 +177,6 @@
   </div>
 </nav>
 
-<!-- HOME -->
 <section id="home" class="active">
   <div class="hero">
     <div class="hero-left">
@@ -200,7 +198,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-header">
     <div class="section-header-inner">
@@ -242,7 +239,6 @@
   </div>
 </section>
 
-<!-- WRITING -->
 <section id="writing">
   <div class="section-header">
     <div class="section-header-inner">
@@ -255,7 +251,6 @@
     </div>
   </div>
 
-  <!-- REPORTED PIECES -->
   <div class="writing-section-label">Reported Pieces & Investigations</div>
   <div class="articles-grid">
 
@@ -322,7 +317,6 @@
 
   </div>
 
-  <!-- OPINION & ESSAYS -->
   <div class="writing-section-label" style="margin-top:0; border-top: 2px solid var(--cream-dark);">Opinion & Essays</div>
   <div class="articles-grid">
 
@@ -374,7 +368,6 @@
   </div>
 </section>
 
-<!-- PHOTOGRAPHY -->
 <section id="photos">
   <div class="section-header">
     <div class="section-header-inner">
@@ -404,7 +397,6 @@
       <img src="images/Fasting Together_8.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
       <img src="images/Fasting Together_9.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
       <img src="images/Fasting Together_10.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
-      <img src="images/Fasting Together_11.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
       <img src="images/Fasting Together_12.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
       <img src="images/Fasting Together_13.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
       <img src="images/Fasting Together_14.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
@@ -440,7 +432,6 @@
   </div>
 </section>
 
-<!-- DOCUMENTARIES -->
 <section id="docs">
   <div class="section-header">
     <div class="section-header-inner">
@@ -524,77 +515,4 @@
       <div class="doc-info">
         <h3>Weaving A Revival</h3>
         <p>A documentary on Kashmiri rugs and their enduring cultural legacy, tracing intricate craftsmanship rooted in the Indo-Persian artistic tradition passed down through generations of weavers.</p>
-        <div class="doc-credit">Executive Producer: Ahamad Fuwad · Press Insider</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:6px">
-        <div class="doc-meta">2024</div>
-        <div class="doc-badge press">Watch on YouTube</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-header">
-    <div class="section-header-inner">
-      <img src="images/fuwad_7.jpg" alt="Fuwad Ahamad" class="section-headshot" />
-      <div>
-        <div class="eyebrow">Let's talk</div>
-        <h2>Get in touch</h2>
-      </div>
-    </div>
-  </div>
-  <div class="contact-split">
-    <div class="contact-left">
-      <p>Available for commissions, collaborations and editorial assignments covering politics, immigration and the South Asian diaspora.</p>
-      <p>If you are a documentary filmmaker looking for a collaborator, I am available from research through production to post-production. I shoot on a Canon R5 C and have experience as an editor.</p>
-      <p>I am also available for photo assignments, including portraits and photojournalism work.</p>
-      <div class="social-links">
-        <a class="social-link" href="https://x.com/qalamaursyahi" target="_blank"><span>Twitter / X</span> @qalamaursyahi</a>
-        <a class="social-link" href="https://www.linkedin.com/in/ahamad-fuwad-605985149/" target="_blank"><span>LinkedIn</span> Fuwad Ahamad</a>
-        <a class="social-link" href="mailto:ahamad_fuwad@berkeley.edu"><span>Email</span> ahamad_fuwad@berkeley.edu</a>
-      </div>
-    </div>
-    <div class="contact-right">
-      <div class="field-group">
-        <label class="field-label">Name</label>
-        <input class="field-input" type="text" placeholder="Your name" />
-      </div>
-      <div class="field-group">
-        <label class="field-label">Email</label>
-        <input class="field-input" type="email" placeholder="your@email.com" />
-      </div>
-      <div class="field-group">
-        <label class="field-label">Message</label>
-        <textarea class="field-input" placeholder="Tell me about the story or project..."></textarea>
-      </div>
-      <button class="submit-btn">Send message</button>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>Fuwad Ahamad — Journalist & Documentary Filmmaker</p>
-  <p>© 2026 <span>·</span> California</p>
-</footer>
-
-<script>
-  function showSection(id) {
-    document.querySelectorAll('section').forEach(function(s) { s.classList.remove('active'); });
-    document.getElementById(id).classList.add('active');
-    window.scrollTo(0, 0);
-  }
-  function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').classList.add('open');
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-  }
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
-</script>
-
-</body>
-</html>
+        <div class="doc-credit">Executive Producer: Ahamad Fuwad ·
