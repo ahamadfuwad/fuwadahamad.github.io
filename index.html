@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fuwad Ahamad — Journalist & Documentary Filmmaker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #1a2744; --navy-dark: #111c33; --navy-mid: #223058;
+      --forest: #2d4a3e; --burgundy: #6b2737; --burgundy-light: #8a3347;
+      --cream: #f5f0e8; --cream-dark: #ede6d6;
+      --gold: #c9a84c; --gold-light: #e2c476;
+      --white: #faf9f7; --text-light: #9aa4b8;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Outfit', sans-serif;
+    }
+    body { font-family: var(--sans); color: var(--navy-dark); background: var(--white); }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 3rem; background: var(--navy-dark); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(201,168,76,0.2); }
+    .logo { font-family: var(--serif); font-size: 1.3rem; color: var(--cream); letter-spacing: 0.02em; cursor: pointer; font-weight: 500; display: flex; align-items: center; gap: 0.8rem; }
+    .logo span { color: var(--gold); font-style: italic; }
+    .logo-headshot { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(201,168,76,0.5); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 0.75rem; text-decoration: none; color: var(--text-light); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; cursor: pointer; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    section { display: none; }
+    section.active { display: block; }
+
+    /* HERO */
+    .hero { min-height: calc(100vh - 57px); background: var(--navy-dark); display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(135deg, var(--navy-mid) 0%, var(--forest) 100%); opacity: 0.4; }
+    .hero-left { padding: 4rem 3rem 4rem 4rem; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; font-weight: 500; }
+    .hero-headshot { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(201,168,76,0.6); margin-bottom: 1.5rem; }
+    .hero-left h1 { font-family: var(--serif); font-size: clamp(3rem, 5vw, 5rem); font-weight: 400; line-height: 1.05; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 1.2rem; }
+    .hero-left h1 .first { color: var(--cream); }
+    .hero-left h1 .last { color: var(--gold-light); font-style: italic; }
+    .hero-left p { font-size: 0.95rem; color: var(--text-light); line-height: 1.8; max-width: 380px; font-weight: 300; }
+    .hero-right { padding: 4rem 4rem 4rem 3rem; display: flex; flex-direction: column; justify-content: center; gap: 2px; position: relative; z-index: 1; }
+    .hero-nav-card { border: 1px solid rgba(201,168,76,0.15); padding: 1.4rem 2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: all 0.25s; background: rgba(26,39,68,0.6); backdrop-filter: blur(4px); margin-bottom: 2px; }
+    .hero-nav-card:hover { background: var(--burgundy); border-color: var(--burgundy-light); }
+    .hero-nav-card:hover .hnc-arrow { color: var(--gold); }
+    .hnc-label { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; color: var(--cream); }
+    .hnc-arrow { font-size: 1rem; color: rgba(201,168,76,0.5); transition: color 0.25s; }
+
+    /* SECTION HEADER */
+    .section-header { background: var(--navy-dark); padding: 2.5rem 4rem; border-bottom: 3px solid var(--gold); }
+    .section-header .eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; font-weight: 500; }
+    .section-header h2 { font-family: var(--serif); font-size: 3rem; font-weight: 400; color: var(--cream); letter-spacing: -0.02em; line-height: 1; }
+    .section-header p { margin-top: 0.5rem; color: var(--text-light); font-size: 0.9rem; font-weight: 300; }
+    .section-header-inner { display: flex; align-items: center; gap: 2rem; }
+    .section-headshot { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(201,168,76,0.5); flex-shrink: 0; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; }
+    .about-text { padding: 3.5rem 4rem; background: var(--white); border-right: 1px solid var(--cream-dark); }
+    .about-text p { font-size: 1rem; line-height: 1.85; color: #3a3a3a; margin-bottom: 1.3rem; font-weight: 300; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-sidebar { padding: 3.5rem 3rem; background: var(--cream); }
+    .sidebar-block { margin-bottom: 2.2rem; }
+    .sidebar-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--burgundy); margin-bottom: 0.6rem; font-weight: 600; }
+    .sidebar-val { font-size: 0.9rem; line-height: 1.7; color: var(--navy-dark); font-weight: 400; }
+    .sidebar-val a { color: var(--burgundy); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* WRITING */
+    .writing-section-label { padding: 1.5rem 4rem 0.8rem; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--burgundy); font-weight: 600; background: var(--cream); border-bottom: 1px solid var(--cream-dark); }
+    .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--cream); }
+    .article-card { border-right: 1px solid var(--cream-dark); border-bottom: 1px solid var(--cream-dark); cursor: pointer; transition: all 0.2s; background: var(--white); overflow: hidden; }
+    .article-card:nth-child(3n) { border-right: none; }
+    .article-card:hover { background: var(--navy-dark); }
+    .article-card:hover .article-title { color: var(--cream); }
+    .article-card:hover .article-desc { color: var(--text-light); }
+    .article-card:hover .article-meta { color: var(--gold); }
+    .article-card:hover .article-pub { border-color: var(--burgundy-light); color: var(--cream); background: var(--burgundy); }
+    .article-thumb { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .article-thumb-placeholder { width: 100%; height: 160px; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.1em; text-transform: uppercase; }
+    .article-body { padding: 1.5rem 1.8rem 1.6rem; }
+    .article-meta { font-size: 0.7rem; color: var(--burgundy); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; font-weight: 500; transition: color 0.2s; }
+    .article-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; line-height: 1.3; margin-bottom: 0.5rem; color: var(--navy-dark); transition: color 0.2s; }
+    .article-desc { font-size: 0.82rem; color: #555; line-height: 1.6; font-weight: 300; transition: color 0.2s; }
+    .article-pub { display: inline-block; margin-top: 0.9rem; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--cream-dark); padding: 3px 10px; color: var(--forest); font-weight: 500; transition: all 0.2s; }
+    .opinion-tag { display: inline-block; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--gold); color: var(--navy-dark); padding: 2px 7px; font-weight: 600; margin-bottom: 0.5rem; }
+
+    /* AUTHOR PAGES */
+    .author-pages-section { background: var(--navy-dark); padding: 2rem 4rem; border-top: 1px solid rgba(201,168,76,0.15); }
+    .author-pages-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 500; }
+    .author-pages-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .author-page-btn { border: 1px solid rgba(201,168,76,0.2); padding: 0.65rem 1.4rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); text-decoration: none; font-weight: 500; transition: all 0.2s; font-family: var(--sans); }
+    .author-page-btn:hover { background: var(--burgundy); border-color: var(--burgundy); }
+
+    /* PHOTOGRAPHY */
+    .photo-story-section { padding: 3rem 4rem; background: var(--cream); border-bottom: 2px solid var(--cream-dark); }
+    .photo-story-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--burgundy); font-weight: 600; margin-bottom: 0.4rem; }
+    .photo-story-title { font-family: var(--serif); font-size: 2.2rem; font-weight: 500; color: var(--navy-dark); margin-bottom: 0.4rem; }
+    .photo-story-byline { font-size: 0.76rem; color: var(--text-light); letter-spacing: 0.08em; margin-bottom: 1.2rem; text-transform: uppercase; }
+    .photo-story-blurb { font-size: 0.95rem; color: #3a3a3a; line-height: 1.85; font-weight: 300; max-width: 720px; margin-bottom: 2rem; }
+    .photo-grid-story { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .photo-grid-story img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; cursor: pointer; transition: opacity 0.2s; }
+    .photo-grid-story img:hover { opacity: 0.85; }
+    .photo-grid-story img:first-child { grid-column: span 2; grid-row: span 2; aspect-ratio: unset; height: 100%; }
+
+    .field-section { background: var(--white); }
+    .photo-section-label { padding: 1.2rem 4rem 0.6rem; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--burgundy); font-weight: 600; border-bottom: 1px solid var(--cream-dark); background: var(--cream); }
+    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .photo-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; cursor: pointer; transition: opacity 0.2s; border: 1px solid var(--cream-dark); }
+    .photo-grid img:hover { opacity: 0.85; }
+
+    /* LIGHTBOX */
+    .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,14,26,0.96); z-index: 999; align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+    .lightbox-close { position: absolute; top: 1.5rem; right: 2rem; color: var(--gold); font-size: 2.5rem; cursor: pointer; font-family: var(--serif); line-height: 1; }
+
+    /* DOCUMENTARIES */
+    .doc-list { padding: 0 4rem; background: var(--white); }
+    .doc-item { display: grid; grid-template-columns: 80px 1fr auto; gap: 2rem; align-items: start; padding: 2.5rem 0; border-bottom: 1px solid var(--cream-dark); cursor: pointer; transition: opacity 0.2s; }
+    .doc-item:hover { opacity: 0.7; }
+    .doc-num { font-family: var(--serif); font-size: 3rem; font-weight: 400; color: var(--cream-dark); line-height: 1; padding-top: 4px; }
+    .doc-info h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--navy-dark); }
+    .doc-info p { font-size: 0.87rem; color: #555; line-height: 1.7; font-weight: 300; }
+    .doc-credit { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.5rem; font-weight: 500; }
+    .doc-badge { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; font-weight: 600; white-space: nowrap; margin-top: 6px; display: inline-block; }
+    .doc-badge.festival { background: var(--burgundy); color: var(--cream); }
+    .doc-badge.press { background: var(--forest); color: var(--cream); }
+    .doc-badge.school { background: var(--navy-mid); color: var(--cream); }
+    .doc-badge.youtube { background: #c00; color: #fff; }
+    .doc-meta { font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 6px; white-space: nowrap; }
+
+    /* CONTACT */
+    .contact-split { display: grid; grid-template-columns: 1fr 1fr; }
+    .contact-left { padding: 3.5rem 4rem; background: var(--navy-dark); }
+    .contact-left p { font-size: 1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300; }
+    .contact-headshot { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(201,168,76,0.5); margin-bottom: 2rem; display: block; }
+    .social-links { margin-top: 2rem; }
+    .social-link { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; font-size: 0.88rem; color: var(--cream); text-decoration: none; transition: color 0.2s; }
+    .social-link:hover { color: var(--gold); }
+    .social-link span { color: var(--gold); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; width: 70px; }
+    .contact-right { padding: 3.5rem 4rem; background: var(--cream); }
+    .field-group { margin-bottom: 1.4rem; }
+    .field-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--burgundy); display: block; margin-bottom: 0.4rem; font-weight: 600; }
+    .field-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--cream-dark); border-bottom: 2px solid var(--navy-mid); font-family: var(--sans); font-size: 0.9rem; color: var(--navy-dark); background: var(--white); outline: none; transition: border-color 0.2s; }
+    .field-input:focus { border-bottom-color: var(--burgundy); }
+    textarea.field-input { resize: vertical; min-height: 110px; }
+    .submit-btn { background: var(--navy-dark); color: var(--cream); border: none; padding: 0.9rem 2.5rem; font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; font-weight: 500; }
+    .submit-btn:hover { background: var(--burgundy); }
+
+    footer { background: var(--navy-dark); border-top: 1px solid rgba(201,168,76,0.2); padding: 1.8rem 4rem; display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--text-light); }
+    footer span { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+
+      /* NAV */
+      nav { padding: 0.9rem 1.2rem; flex-wrap: wrap; gap: 0.6rem; }
+      .logo { font-size: 1.1rem; }
+      .logo-headshot { width: 32px; height: 32px; }
+      .nav-links { gap: 0.9rem; flex-wrap: wrap; }
+      .nav-links a { font-size: 0.65rem; letter-spacing: 0.06em; }
+
+      /* HERO */
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero::before { width: 100%; opacity: 0.2; }
+      .hero-left { padding: 3rem 1.5rem 1.5rem; }
+      .hero-headshot { width: 90px; height: 90px; }
+      .hero-left h1 { font-size: 3.2rem; }
+      .hero-left p { max-width: 100%; font-size: 0.9rem; }
+      .hero-right { padding: 1rem 1.5rem 3rem; gap: 2px; }
+      .hero-nav-card { padding: 1.1rem 1.4rem; }
+
+      /* SECTION HEADERS */
+      .section-header { padding: 2rem 1.5rem 1.5rem; }
+      .section-header h2 { font-size: 2.2rem; }
+      .section-header-inner { gap: 1rem; }
+      .section-headshot { width: 70px; height: 70px; }
+
+      /* ABOUT */
+      .about-grid { grid-template-columns: 1fr; }
+      .about-text { padding: 2rem 1.5rem; border-right: none; border-bottom: 1px solid var(--cream-dark); }
+      .about-sidebar { padding: 2rem 1.5rem; }
+
+      /* WRITING */
+      .writing-section-label { padding: 1rem 1.5rem 0.6rem; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .article-card:nth-child(3n) { border-right: 1px solid var(--cream-dark); }
+      .article-card { border-right: none; }
+      .article-body { padding: 1.2rem 1.4rem 1.4rem; }
+      .author-pages-section { padding: 1.5rem; }
+      .author-pages-grid { gap: 0.6rem; }
+
+      /* PHOTOGRAPHY */
+      .photo-story-section { padding: 2rem 1.5rem; }
+      .photo-story-title { font-size: 1.6rem; }
+      .photo-story-blurb { font-size: 0.88rem; }
+      .photo-grid-story { grid-template-columns: repeat(2, 1fr); }
+      .photo-grid-story img:first-child { grid-column: span 2; grid-row: span 1; aspect-ratio: 3/2; }
+      .photo-section-label { padding: 1rem 1.5rem 0.5rem; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* DOCUMENTARIES */
+      .doc-list { padding: 0 1.5rem; }
+      .doc-item { grid-template-columns: 50px 1fr; gap: 1rem; }
+      .doc-item > div:last-child { grid-column: 2; }
+      .doc-num { font-size: 2rem; }
+      .doc-info h3 { font-size: 1.15rem; }
+      .doc-meta { white-space: normal; }
+
+      /* CONTACT */
+      .contact-split { grid-template-columns: 1fr; }
+      .contact-left { padding: 2rem 1.5rem; }
+      .contact-right { padding: 2rem 1.5rem; }
+      .contact-headshot { width: 80px; height: 80px; }
+
+      /* FOOTER */
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.4rem; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { gap: 0.6rem; }
+      .nav-links a { font-size: 0.6rem; }
+      .hero-left h1 { font-size: 2.6rem; }
+      .section-header h2 { font-size: 1.9rem; }
+      .photo-grid-story { grid-template-columns: 1fr; }
+      .photo-grid-story img:first-child { grid-column: span 1; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .doc-item { grid-template-columns: 40px 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close">×</div>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<nav>
+  <div class="logo" onclick="showSection('home')">
+    <img src="images/fuwad_3.jpg" alt="Fuwad Ahamad" class="logo-headshot" />
+    Fuwad <span>Ahamad</span>
+  </div>
+  <div class="nav-links">
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('writing')">Writing</a>
+    <a onclick="showSection('photos')">Photos</a>
+    <a onclick="showSection('docs')">Documentaries</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Journalist · Documentary Filmmaker</div>
+      <img src="images/fuwad_3.jpg" alt="Fuwad Ahamad" class="hero-headshot" />
+      <h1>
+        <span class="first">Fuwad</span><br>
+        <span class="last">Ahamad</span>
+      </h1>
+      <p>Multiplatform journalist with 12+ years of experience reporting on elections, accountability and social movements in the U.S. and India — across print, digital and documentary.</p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-nav-card" onclick="showSection('writing')"><span class="hnc-label">Writing</span><span class="hnc-arrow">→</span></div>
+      <div class="hero-nav-card" onclick="showSection('docs')"><span class="hnc-label">Documentaries</span><span class="hnc-arrow">→</span></div>
+      <div class="hero-nav-card" onclick="showSection('photos')"><span class="hnc-label">Photography</span><span class="hnc-arrow">→</span></div>
+      <div class="hero-nav-card" onclick="showSection('about')"><span class="hnc-label">About me</span><span class="hnc-arrow">→</span></div>
+      <div class="hero-nav-card" onclick="showSection('contact')"><span class="hnc-label">Get in touch</span><span class="hnc-arrow">→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <img src="images/fuwad_6.jpg" alt="Fuwad Ahamad" class="section-headshot" />
+      <div>
+        <div class="eyebrow">Who I am</div>
+        <h2>About me</h2>
+      </div>
+    </div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Hello! I am a journalist and documentary filmmaker based in California, covering politics, immigration and the South Asian diaspora. My work has appeared in The Guardian, The Quint, Oakland North, The Oaklandside and Press Insider, among others. My work appears under the byline Ahamad Fuwad.</p>
+      <p>Over 12 years in newsrooms across India and the United States, I have covered global politics, diaspora movements and international affairs both as a reporter and editor. I led international news coverage at The Quint, one of India's most respected independent digital publications, and helped launch Press Insider, India's first global policy publication, as its head of bureau. My investigations into Hindu right-wing fundraising networks in the United States have prompted responses from civil rights organizations and law enforcement.</p>
+      <p>I am a Jubilee Fellow and graduate of the UC Berkeley Graduate School of Journalism, where I specialized in documentary filmmaking, using long-form storytelling to examine the impact of majoritarian politics in India and the United States. I also hold master's degrees in Peace and Conflict Studies and Broadcast Technology from Jamia Millia Islamia, New Delhi.</p>
+    </div>
+    <div class="about-sidebar">
+      <div class="sidebar-block">
+        <div class="sidebar-label">Based in</div>
+        <div class="sidebar-val">California, United States</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Beats</div>
+        <div class="sidebar-val">Politics · Immigration · South Asian Diaspora · Accountability · International Affairs</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Published in</div>
+        <div class="sidebar-val">The Guardian, The Quint, Oakland North, The Oaklandside, Press Insider, DNA India, India TV</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Documentary</div>
+        <div class="sidebar-val">Between Two Worlds — post-production (2026)</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Contact</div>
+        <div class="sidebar-val"><a href="mailto:ahamad_fuwad@berkeley.edu">ahamad_fuwad@berkeley.edu</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <img src="images/fuwad_2.jpg" alt="Fuwad Ahamad" class="section-headshot" />
+      <div>
+        <div class="eyebrow">Selected work</div>
+        <h2>Writing</h2>
+        <p>Twelve years of reporting across two countries, from breaking news desks in India to investigations in the United States. I have covered politics, immigration and the South Asian diaspora for publications including The Guardian, The Quint and Oakland North.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORTED PIECES -->
+  <div class="writing-section-label">Reported Pieces & Investigations</div>
+  <div class="articles-grid">
+
+    <div class="article-card" onclick="window.open('https://www.theguardian.com/us-news/2024/dec/28/openai-whistleblower-suchir-balaji','_blank')">
+      <div class="article-thumb-placeholder">The Guardian</div>
+      <div class="article-body">
+        <div class="article-meta">The Guardian · December 2024</div>
+        <div class="article-title">Family of OpenAI Whistleblower Suchir Balaji Demand FBI Investigate Death</div>
+        <div class="article-desc">Balaji's parents refused to accept the suicide ruling after their son was found dead in his San Francisco apartment. I interviewed his family at a vigil and reported on their demand for an FBI investigation.</div>
+        <span class="article-pub">The Guardian</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="window.open('https://oaklandnorth.net/2024/10/08/mayor-thao-rallies-against-recall-with-help-from-a-former-oakland-mayor-and-other-supporters/','_blank')">
+      <div class="article-thumb-placeholder">Oakland North</div>
+      <div class="article-body">
+        <div class="article-meta">Oakland North · October–November 2024</div>
+        <div class="article-title">Covering the Recall of Oakland Mayor Sheng Thao</div>
+        <div class="article-desc">Covered Mayor Sheng Thao's anti-recall campaign launch through election night, when 64% of voters chose to remove her from office — tracking the money, the politics and the players.</div>
+        <span class="article-pub">Oakland North</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="window.open('https://www.thequint.com/south-asians/hindutva-fundraiser-frisco-texas-global-hindu-heritage-foundation-demolition-of-illegal-churches-tirupati-ghar-wapsi','_blank')">
+      <img class="article-thumb" src="https://cf-images.assettype.com/thequint%2F2022-12%2F8e3a3a3a-3a3a-3a3a-3a3a-3a3a3a3a3a3a%2Fhindutva.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Hindutva Texas" />
+      <div class="article-thumb-placeholder" style="display:none">The Quint</div>
+      <div class="article-body">
+        <div class="article-meta">The Quint · December 2022</div>
+        <div class="article-title">'Demolish Illegal Churches': Hindutva Fundraiser in Texas Kicks Up a Storm</div>
+        <div class="article-desc">Reported on a Hindu nationalist fundraiser in Texas raising money to demolish churches in India, prompting 14 civil rights organizations to demand a congressional probe.</div>
+        <span class="article-pub">The Quint</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="window.open('https://www.thequint.com/south-asians/illinois-indian-american-advisory-council-act-hindutva-desi-community-fought-back','_blank')">
+      <div class="article-thumb-placeholder">The Quint</div>
+      <div class="article-body">
+        <div class="article-meta">The Quint · January 2023</div>
+        <div class="article-title">How Desis in Illinois Fought Off a Law Altering the Definition of 'Indian'</div>
+        <div class="article-desc">An investigation into an Illinois law that defined 'Indian' to exclude Muslim-majority countries — and the South Asian American coalition that successfully fought to have it overturned.</div>
+        <span class="article-pub">The Quint</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="window.open('https://www.thequint.com/south-asians/fits-narrative-mea-advisory-vandalism-canada-brampton-shri-bhagavad-gita-park-hate-crimes-patrick-brown','_blank')">
+      <div class="article-thumb-placeholder">The Quint</div>
+      <div class="article-body">
+        <div class="article-meta">The Quint · October 2022</div>
+        <div class="article-title">Did Canada Really Vandalise a Bhagavad Gita Park Sign? The Truth Is More Complicated</div>
+        <div class="article-desc">When India's High Commission called a park sign removal in Brampton a hate crime, I dug through social media across 7,000 miles to find eyewitnesses — uncovering a routine repair misread as a diplomatic incident.</div>
+        <span class="article-pub">The Quint</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="window.open('https://www.thequint.com/news/world/f16-jets-bajwa-washington-dc-donald-blome-pok-visit-india-concerned-about-reset-in-us-pak-ties','_blank')">
+      <div class="article-thumb-placeholder">The Quint</div>
+      <div class="article-body">
+        <div class="article-meta">The Quint · October 2022</div>
+        <div class="article-title">What Does the Reset in US-Pakistan Ties Mean for India?</div>
+        <div class="article-desc">With the F16 deal, Bajwa's Washington visit and the US ambassador's trip to PoK, I spoke to Washington-based foreign policy experts to understand what a renewed US-Pakistan relationship means for India.</div>
+        <span class="article-pub">The Quint</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- OPINION & ESSAYS -->
+  <div class="writing-section-label" style="margin-top:0; border-top: 2px solid var(--cream-dark);">Opinion & Essays</div>
+  <div class="articles-grid">
+
+    <div class="article-card" onclick="window.open('https://www.thequint.com/voices/blogs/as-india-continues-to-humiliate-muslims-i-write-an-elegy-for-my-dead-patriotism-sulli-deals-bulli-bai-hate-speech-haridwar-dharam-sansad','_blank')">
+      <img class="article-thumb" src="https://cf-images.assettype.com/thequint%2F2022-01%2F17f0d267-73be-418f-936c-03051f7b68a0%2Fqqqq.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Elegy" />
+      <div class="article-thumb-placeholder" style="display:none">The Quint</div>
+      <div class="article-body">
+        <div class="opinion-tag">Essay</div>
+        <div class="article-meta">The Quint · January 2022</div>
+        <div class="article-title">As India Continues to Humiliate Muslims, I Write An Elegy for My Dead Patriotism</div>
+        <div class="article-desc">From the Haridwar Dharam Sansad to the Bulli Bai app, a personal reckoning with what it means to be a Muslim in contemporary India.</div>
+        <span class="article-pub">The Quint</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="window.open('https://www.thequint.com/entertainment/celebrities/shah-rukh-khan-tribute-from-hating-to-loving-king-khan-aryan-khan','_blank')">
+      <img class="article-thumb" src="https://cf-images.assettype.com/thequint%2F2018-11%2Fba29008d-9860-46ef-b319-9d12030c51df%2F46118b30_698d_4c08_8f19_23ffac554d35.jpg?rect=0%2C0%2C600%2C315" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="SRK" />
+      <div class="article-thumb-placeholder" style="display:none">The Quint</div>
+      <div class="article-body">
+        <div class="opinion-tag">Essay</div>
+        <div class="article-meta">The Quint · November 2021</div>
+        <div class="article-title">The Journey From Hating Shah Rukh Khan to Loving the Bollywood Superstar</div>
+        <div class="article-desc">After Aryan Khan's arrest and the media trial that followed, a personal tribute to why Shah Rukh Khan means so much to so many — including those who once dismissed him.</div>
+        <span class="article-pub">The Quint</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="window.open('https://www.thequint.com/entertainment/hot-on-web/ms-marvel-proves-shah-rukh-khan-is-an-intrinsic-part-of-desi-culture-iman-vellani-kamala-khan','_blank')">
+      <img class="article-thumb" src="https://cf-images.assettype.com/thequint%2F2022-06%2Ff68cca1c-f528-40be-b403-3fe6fc872593%2Fthumbnail_hero_image__3__copy.jpg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" alt="Ms Marvel SRK" />
+      <div class="article-thumb-placeholder" style="display:none">The Quint</div>
+      <div class="article-body">
+        <div class="opinion-tag">Essay</div>
+        <div class="article-meta">The Quint · June 2022</div>
+        <div class="article-title">Ms Marvel Proves Shah Rukh Khan Is an Intrinsic Part of Desi Culture</div>
+        <div class="article-desc">Marvel's Ms Marvel delves into Bollywood — and predominantly Shah Rukh Khan — proving that his stardom transcends borders and generations of the diaspora.</div>
+        <span class="article-pub">The Quint</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="author-pages-section">
+    <div class="author-pages-label">All published work — author pages</div>
+    <div class="author-pages-grid">
+      <a class="author-page-btn" href="https://www.thequint.com/author/1624194/ahamad-fuwad" target="_blank">The Quint</a>
+      <a class="author-page-btn" href="https://www.dnaindia.com/authors/ahamad-fuwad" target="_blank">DNA India</a>
+      <a class="author-page-btn" href="https://www.indiatvnews.com/author/ahamad-fuwad" target="_blank">India TV</a>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTOGRAPHY -->
+<section id="photos">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <img src="images/fuwad_4.jpg" alt="Fuwad Ahamad" class="section-headshot" />
+      <div>
+        <div class="eyebrow">Visual work</div>
+        <h2>Photography</h2>
+        <p>My work spans documentary photo stories, field reporting and community portraiture. Fasting Together, my photo story on Ramadan at Berkeley Masjid, was published in Berkeley Journalism's annual magazine RealEyes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="photo-story-section">
+    <div class="photo-story-label">Photo Story</div>
+    <div class="photo-story-title">Fasting Together</div>
+    <div class="photo-story-byline">By Ahamad Fuwad</div>
+    <div class="photo-story-blurb">Ramadan, the holiest month in Islam, is a special time of year for Muslims. They fast from dawn to sunset, gather for nightly prayers and break their fast surrounded by family and friends. For Muslim students at the University of California, Berkeley, celebrating Ramadan away from home can be especially difficult to cultivate that sense of togetherness. For those students, Berkeley Masjid on Derby Street has become that home away from home.<br><br>Throughout the month of Ramadan, Muslims from across Berkeley gather at the masjid each evening — nearly 300 people break their fast together. After dinner and prayers, people linger to talk, catch up with friends and even play late-night dodgeball.<br><br>These photographs document a month of Ramadan at Berkeley Masjid, capturing moments of prayer, joy and togetherness. They culminate in the celebration of Eid al-Fitr, the holiday that marks the end of the fasting month.</div>
+    <div class="photo-grid-story">
+      <img src="images/Fasting Together_15.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_1.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_2.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_3.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_4.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_5.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_6.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_7.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_8.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_9.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_10.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_11.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_12.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_13.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_14.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_16.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_17.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_18.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_19.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_20.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_21.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_22.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_23.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_24.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+      <img src="images/Fasting Together_25.jpg" alt="Fasting Together" onclick="openLightbox(this.src)" />
+    </div>
+  </div>
+
+  <div class="field-section">
+    <div class="photo-section-label">In the Field</div>
+    <div class="photo-grid">
+      <img src="images/In The Field_1.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_2.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_3.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_4.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_5.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_6.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_7.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_8.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_9.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_10.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_11.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+      <img src="images/In The Field_12.jpg" alt="In the Field" onclick="openLightbox(this.src)" />
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTARIES -->
+<section id="docs">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <img src="images/fuwad_1.jpg" alt="Fuwad Ahamad" class="section-headshot" />
+      <div>
+        <div class="eyebrow">Long-form film work</div>
+        <h2>Documentaries</h2>
+        <p>I make character-driven documentaries on immigration, identity and politics. My latest film, Between Two Worlds, is currently in post-production and will soon screen at prestigious film festivals. Earlier work includes short documentaries produced at UC Berkeley and a series of shorts produced for Indian publications including The Quint and Press Insider.</p>
+      </div>
+    </div>
+  </div>
+  <div class="doc-list">
+
+    <div class="doc-item">
+      <div class="doc-num">01</div>
+      <div class="doc-info">
+        <h3>Between Two Worlds</h3>
+        <p>An Iranian asylum seeker who fled persecution after the Women, Life, Freedom protests rebuilds his life in California — working multiple jobs, navigating a broken immigration system and even campaigning for Donald Trump — until ICE detention takes everything from him again. A non-linear portrait of detention as a recurring rupture that destabilizes identity, labor and belonging.</p>
+        <div class="doc-credit">Director & Producer: Ahamad Fuwad</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:6px">
+        <div class="doc-meta">2026 · 21 min</div>
+        <div class="doc-badge festival">Post-Production</div>
+      </div>
+    </div>
+
+    <div class="doc-item" onclick="window.open('https://youtu.be/2Svnazoftm4','_blank')">
+      <div class="doc-num">02</div>
+      <div class="doc-info">
+        <h3>If I Must Die</h3>
+        <p>Two American activists — David Hummel, a 21-year-old German-American, and Dottie, a Jewish-American artist — travel to the occupied West Bank as part of an international protective presence effort, bearing witness to Palestinian life under occupation. The film moves between harrowing footage of settler attacks and quiet moments of humanity, culminating in the annual Marine Kite Festival in Burin, where children fly kites in defiance of a military ban. It closes with a recitation of Refaat Alareer's poem <em>If I Must Die</em>.</p>
+        <div class="doc-credit">Director & Producer: Ahamad Fuwad</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:6px">
+        <div class="doc-meta">2025 · 9 min 55 sec</div>
+        <div class="doc-badge youtube">Watch on YouTube</div>
+      </div>
+    </div>
+
+    <div class="doc-item" onclick="window.open('https://drive.google.com/file/d/1I720yMxy0OTP6Z2UMzppQltnfKBscBt5/view','_blank')">
+      <div class="doc-num">03</div>
+      <div class="doc-info">
+        <h3>Firehouse: Life Between the Calls</h3>
+        <p>An observational documentary on the lives of firefighters at Berkeley Fire Department's Station 5 — the quiet routines, the waiting and the moments of stillness between emergency calls.</p>
+        <div class="doc-credit">Director & Producer: Ahamad Fuwad · UC Berkeley</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:6px">
+        <div class="doc-meta">2024 · 4 min 48 sec</div>
+        <div class="doc-badge school">Watch on Drive</div>
+      </div>
+    </div>
+
+    <div class="doc-item" onclick="window.open('https://drive.google.com/file/d/1Cl8CjdmvXKoJlSoWstU5cnFzVa1kCiDF/view','_blank')">
+      <div class="doc-num">04</div>
+      <div class="doc-info">
+        <h3>Brandon Lee</h3>
+        <p>A video portrait of Chinese-American activist Brandon Lee, who was shot and paralyzed in the Philippines while advocating for Indigenous rights — and what drives him to continue the fight.</p>
+        <div class="doc-credit">Director & Producer: Ahamad Fuwad · UC Berkeley</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:6px">
+        <div class="doc-meta">2024 · 5 min 53 sec</div>
+        <div class="doc-badge school">Watch on Drive</div>
+      </div>
+    </div>
+
+    <div class="doc-item" onclick="window.open('https://www.youtube.com/watch?v=Pi0cmn5BR_M','_blank')">
+      <div class="doc-num">05</div>
+      <div class="doc-info">
+        <h3>Tracing India's Spice Trade Through Kerala's Mattancherry</h3>
+        <p>A documentary tracing the spices that changed the course of world history through Mattancherry in Kerala — a port town where ideas of cuisine and culture were exchanged on a global scale for centuries.</p>
+        <div class="doc-credit">Executive Producer: Ahamad Fuwad · Press Insider</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:6px">
+        <div class="doc-meta">2023</div>
+        <div class="doc-badge press">Watch on YouTube</div>
+      </div>
+    </div>
+
+    <div class="doc-item" onclick="window.open('https://www.youtube.com/watch?v=YyTSt9HIpDo','_blank')">
+      <div class="doc-num">06</div>
+      <div class="doc-info">
+        <h3>Weaving A Revival</h3>
+        <p>A documentary on Kashmiri rugs and their enduring cultural legacy, tracing intricate craftsmanship rooted in the Indo-Persian artistic tradition passed down through generations of weavers.</p>
+        <div class="doc-credit">Executive Producer: Ahamad Fuwad · Press Insider</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;padding-top:6px">
+        <div class="doc-meta">2024</div>
+        <div class="doc-badge press">Watch on YouTube</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <div class="section-header-inner">
+      <img src="images/fuwad_7.jpg" alt="Fuwad Ahamad" class="section-headshot" />
+      <div>
+        <div class="eyebrow">Let's talk</div>
+        <h2>Get in touch</h2>
+      </div>
+    </div>
+  </div>
+  <div class="contact-split">
+    <div class="contact-left">
+      <img src="images/fuwad_7.jpg" alt="Fuwad Ahamad" class="contact-headshot" />
+      <p>Available for commissions, collaborations and editorial assignments covering politics, immigration and the South Asian diaspora.</p>
+      <p>If you are a documentary filmmaker looking for a collaborator, I am available from research through production to post-production. I shoot on a Canon R5 C and have experience as an editor.</p>
+      <p>I am also available for photo assignments, including portraits and photojournalism work.</p>
+      <div class="social-links">
+        <a class="social-link" href="https://x.com/qalamaursyahi" target="_blank"><span>Twitter / X</span> @qalamaursyahi</a>
+        <a class="social-link" href="https://www.linkedin.com/in/ahamad-fuwad-605985149/" target="_blank"><span>LinkedIn</span> Fuwad Ahamad</a>
+        <a class="social-link" href="mailto:ahamad_fuwad@berkeley.edu"><span>Email</span> ahamad_fuwad@berkeley.edu</a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="field-group">
+        <label class="field-label">Name</label>
+        <input class="field-input" type="text" placeholder="Your name" />
+      </div>
+      <div class="field-group">
+        <label class="field-label">Email</label>
+        <input class="field-input" type="email" placeholder="your@email.com" />
+      </div>
+      <div class="field-group">
+        <label class="field-label">Message</label>
+        <textarea class="field-input" placeholder="Tell me about the story or project..."></textarea>
+      </div>
+      <button class="submit-btn">Send message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Fuwad Ahamad — Journalist & Documentary Filmmaker</p>
+  <p>© 2026 <span>·</span> California</p>
+</footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(function(s) { s.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
