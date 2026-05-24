@@ -153,85 +153,6 @@
     footer { background: var(--navy-dark); border-top: 1px solid rgba(201,168,76,0.2); padding: 1.8rem 4rem; display: flex; justify-content: space-between; align-items: center; }
     footer p { font-size: 0.78rem; color: var(--text-light); }
     footer span { color: var(--gold); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-
-      /* NAV */
-      nav { padding: 0.9rem 1.2rem; flex-wrap: wrap; gap: 0.6rem; }
-      .logo { font-size: 1.1rem; }
-      .logo-headshot { width: 32px; height: 32px; }
-      .nav-links { gap: 0.9rem; flex-wrap: wrap; }
-      .nav-links a { font-size: 0.65rem; letter-spacing: 0.06em; }
-
-      /* HERO */
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero::before { width: 100%; opacity: 0.2; }
-      .hero-left { padding: 3rem 1.5rem 1.5rem; }
-      .hero-headshot { width: 90px; height: 90px; }
-      .hero-left h1 { font-size: 3.2rem; }
-      .hero-left p { max-width: 100%; font-size: 0.9rem; }
-      .hero-right { padding: 1rem 1.5rem 3rem; gap: 2px; }
-      .hero-nav-card { padding: 1.1rem 1.4rem; }
-
-      /* SECTION HEADERS */
-      .section-header { padding: 2rem 1.5rem 1.5rem; }
-      .section-header h2 { font-size: 2.2rem; }
-      .section-header-inner { gap: 1rem; }
-      .section-headshot { width: 70px; height: 70px; }
-
-      /* ABOUT */
-      .about-grid { grid-template-columns: 1fr; }
-      .about-text { padding: 2rem 1.5rem; border-right: none; border-bottom: 1px solid var(--cream-dark); }
-      .about-sidebar { padding: 2rem 1.5rem; }
-
-      /* WRITING */
-      .writing-section-label { padding: 1rem 1.5rem 0.6rem; }
-      .articles-grid { grid-template-columns: 1fr; }
-      .article-card:nth-child(3n) { border-right: 1px solid var(--cream-dark); }
-      .article-card { border-right: none; }
-      .article-body { padding: 1.2rem 1.4rem 1.4rem; }
-      .author-pages-section { padding: 1.5rem; }
-      .author-pages-grid { gap: 0.6rem; }
-
-      /* PHOTOGRAPHY */
-      .photo-story-section { padding: 2rem 1.5rem; }
-      .photo-story-title { font-size: 1.6rem; }
-      .photo-story-blurb { font-size: 0.88rem; }
-      .photo-grid-story { grid-template-columns: repeat(2, 1fr); }
-      .photo-grid-story img:first-child { grid-column: span 2; grid-row: span 1; aspect-ratio: 3/2; }
-      .photo-section-label { padding: 1rem 1.5rem 0.5rem; }
-      .photo-grid { grid-template-columns: repeat(2, 1fr); }
-
-      /* DOCUMENTARIES */
-      .doc-list { padding: 0 1.5rem; }
-      .doc-item { grid-template-columns: 50px 1fr; gap: 1rem; }
-      .doc-item > div:last-child { grid-column: 2; }
-      .doc-num { font-size: 2rem; }
-      .doc-info h3 { font-size: 1.15rem; }
-      .doc-meta { white-space: normal; }
-
-      /* CONTACT */
-      .contact-split { grid-template-columns: 1fr; }
-      .contact-left { padding: 2rem 1.5rem; }
-      .contact-right { padding: 2rem 1.5rem; }
-      .contact-headshot { width: 80px; height: 80px; }
-
-      /* FOOTER */
-      footer { padding: 1.5rem; flex-direction: column; gap: 0.4rem; text-align: center; }
-    }
-
-    @media (max-width: 480px) {
-      .nav-links { gap: 0.6rem; }
-      .nav-links a { font-size: 0.6rem; }
-      .hero-left h1 { font-size: 2.6rem; }
-      .section-header h2 { font-size: 1.9rem; }
-      .photo-grid-story { grid-template-columns: 1fr; }
-      .photo-grid-story img:first-child { grid-column: span 1; }
-      .photo-grid { grid-template-columns: 1fr; }
-      .doc-item { grid-template-columns: 40px 1fr; }
-    }
-
   </style>
 </head>
 <body>
@@ -627,7 +548,6 @@
   </div>
   <div class="contact-split">
     <div class="contact-left">
-      <img src="images/fuwad_7.jpg" alt="Fuwad Ahamad" class="contact-headshot" />
       <p>Available for commissions, collaborations and editorial assignments covering politics, immigration and the South Asian diaspora.</p>
       <p>If you are a documentary filmmaker looking for a collaborator, I am available from research through production to post-production. I shoot on a Canon R5 C and have experience as an editor.</p>
       <p>I am also available for photo assignments, including portraits and photojournalism work.</p>
