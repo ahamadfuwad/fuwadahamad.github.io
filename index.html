@@ -210,7 +210,7 @@
   </div>
   <div class="about-grid">
     <div class="about-text">
-      <p>Hello! I am a journalist and documentary filmmaker based in California, covering politics, immigration and the South Asian diaspora. My work has appeared in The Guardian, The Quint, Oakland North, The Oaklandside and Press Insider, among others. My work appears under the byline Ahamad Fuwad.</p>
+      <p>Hello! I am a journalist and documentary filmmaker based in California, covering politics, immigration and the South Asian diaspora. My work has appeared in The Guardian, The Quint, Oakland North, The Oaklandside and Press Insider, among others.</p>
       <p>Over 12 years in newsrooms across India and the United States, I have covered global politics, diaspora movements and international affairs both as a reporter and editor. I led international news coverage at The Quint, one of India's most respected independent digital publications, and helped launch Press Insider, India's first global policy publication, as its head of bureau. My investigations into Hindu right-wing fundraising networks in the United States have prompted responses from civil rights organizations and law enforcement.</p>
       <p>I am a Jubilee Fellow and graduate of the UC Berkeley Graduate School of Journalism, where I specialized in documentary filmmaking, using long-form storytelling to examine the impact of majoritarian politics in India and the United States. I also hold master's degrees in Peace and Conflict Studies and Broadcast Technology from Jamia Millia Islamia, New Delhi.</p>
     </div>
@@ -548,24 +548,26 @@
       <div class="social-links">
         <a class="social-link" href="https://x.com/qalamaursyahi" target="_blank"><span>Twitter / X</span> @qalamaursyahi</a>
         <a class="social-link" href="https://www.linkedin.com/in/ahamad-fuwad-605985149/" target="_blank"><span>LinkedIn</span> Fuwad Ahamad</a>
-        <a class="social-link" href="mailto:fuwadahamad@gmail.com"><span>Email (Pers)</span> fuwadahamad@gmail.com</a>
-        <a class="social-link" href="mailto:ahamad_fuwad@berkeley.edu"><span>Email (Univ)</span> ahamad_fuwad@berkeley.edu</a>
+        <a class="social-link" href="mailto:fuwadahamad@gmail.com"><span>Email</span> fuwadahamad@gmail.com</a>
       </div>
     </div>
     <div class="contact-right">
-      <div class="field-group">
-        <label class="field-label">Name</label>
-        <input class="field-input" type="text" placeholder="Your name" />
-      </div>
-      <div class="field-group">
-        <label class="field-label">Email</label>
-        <input class="field-input" type="email" placeholder="your@email.com" />
-      </div>
-      <div class="field-group">
-        <label class="field-label">Message</label>
-        <textarea class="field-input" placeholder="Tell me about the story or project..."></textarea>
-      </div>
-      <button class="submit-btn">Send message</button>
+      <form action="https://formspree.io/f/xoqzpegl" method="POST" id="contact-form">
+        <div class="field-group">
+          <label class="field-label">Name</label>
+          <input class="field-input" type="text" name="name" placeholder="Your name" required />
+        </div>
+        <div class="field-group">
+          <label class="field-label">Email</label>
+          <input class="field-input" type="email" name="_replyto" placeholder="your@email.com" required />
+        </div>
+        <div class="field-group">
+          <label class="field-label">Message</label>
+          <textarea class="field-input" name="message" placeholder="Tell me about the story or project..." required></textarea>
+        </div>
+        <input type="hidden" name="_to" value="fuwadahamad@gmail.com">
+        <button class="submit-btn" type="submit">Send message</button>
+      </form>
     </div>
   </div>
 </section>
